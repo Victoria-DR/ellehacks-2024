@@ -1,10 +1,10 @@
 import { ObjectId } from "mongodb";
 import client from "../mongodbClient";
 
-const getSprite = async (spriteId) => {
+const getEntity = async (entityId) => {
   try {
-    const sprites = client.db("game").collection("sprites");
-    const query = { _id: new ObjectId(spriteId) };
+    const sprites = client.db("game").collection("entities");
+    const query = { _id: new ObjectId(entityId) };
     const response = await sprites.findOne(query);
     return response;
   } catch (err) {
@@ -12,4 +12,4 @@ const getSprite = async (spriteId) => {
   }
 };
 
-export default getSprite;
+export default getEntity;
