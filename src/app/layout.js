@@ -15,6 +15,17 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <script src={placesUri} async />
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js" async />
+        <script
+          type="text/javascript"
+          src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js"
+          async
+        />
+        <script
+          type="text/javascript"
+          src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"
+          async
+        />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={inter.className}>{children}</body>
