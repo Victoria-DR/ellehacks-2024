@@ -9,9 +9,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const placesUri = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places&callback=initMa`;
+
   return (
     <html lang="en">
       <head>
+        <script src={placesUri} async />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={inter.className}>{children}</body>

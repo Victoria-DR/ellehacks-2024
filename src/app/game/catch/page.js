@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import getParks from "@/lib/location/getParks";
 
 export default function Page() {
   const [coordinates, setCoordinates] = useState({});
@@ -8,7 +9,7 @@ export default function Page() {
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,
-    maximumAge: 0,
+    maximumAge: 5000,
   };
 
   const success = (pos) => {
@@ -23,9 +24,13 @@ export default function Page() {
     const fetchCoordinates = async () => {
       await navigator.geolocation.getCurrentPosition(success, error, options);
     };
-
     fetchCoordinates();
-    console.log("Location: ", coordinates);
+    // console.log("Location: ", coordinates);
+
+    const fetchParks = async () => {
+      await getParks(coordinates);
+    };
+    console.log(fetchParks());
   });
-  return <p>Catch Page</p>;
+  return <p id="map">Catch Page</p>;
 }
