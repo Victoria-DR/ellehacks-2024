@@ -26,9 +26,7 @@ export default function Page() {
     const fetchCoordinates = async () => {
       await navigator.geolocation.getCurrentPosition(success, error, options);
     };
-    while (!coordinates.current.latitude) {
-      fetchCoordinates();
-    }
+    fetchCoordinates();
 
     const fetchParks = async () => {
       const parksData = await getPlaces(coordinates.current, "500", "park");
@@ -45,7 +43,6 @@ export default function Page() {
       setLibraries(librariesData);
     };
     fetchLibraries();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  });
   return <p id="map">Catch Page</p>;
 }
