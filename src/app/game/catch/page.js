@@ -1,15 +1,23 @@
-import ARPage from "../../game/AR/page.js";
+"use client";
 
-const HomePage = () => {
-  return (
-    <div>
-      {/* Your other Next.js page content */}
-      <h1>Welcome to My Next.js App</h1>
+import { useEffect, useRef } from "react";
+import getPlaces from "@/lib/location/getPlaces";
 
-      {/* Include the ARPage component */}
-      <ARPage />
-    </div>
-  );
-};
+export default function Page() {
+  const coordinates = useRef({ lat: "43.772188", lng: "-79.506687" });
+  const parks = useRef([]);
+  const libraries = useRef([]);
 
-export default HomePage;
+  const fetchGamePlaces = async () => {
+    const data = await getPlaces(coordinates.current);
+    parks.current = data.parks;
+    libraries.current = data.libraries;
+  };
+
+  useEffect(() => {
+    fetchGamePlaces();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return <p id="map">Catch Page</p>;
+}
