@@ -15,14 +15,19 @@ const ARPage = () => {
         <title>AR.js A-Frame Location-based</title>
       </Head>
       <Helmet>
-        <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+        <script
+          src="https://aframe.io/releases/1.3.0/aframe.min.js"
+          async
+        ></script>
         <script
           type="text/javascript"
           src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js"
+          async
         ></script>
         <script
           type="text/javascript"
           src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"
+          async
         ></script>
       </Helmet>
 
