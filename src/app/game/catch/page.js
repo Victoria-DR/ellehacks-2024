@@ -1,10 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import getParks from "@/lib/location/getParks";
+import { useEffect, useRef, useState } from "react";
+import getPlaces from "@/lib/location/getPlaces";
 
 export default function Page() {
-  const [coordinates, setCoordinates] = useState({});
+  const coordinates = useRef({});
+  const [parks, setParks] = useState([]);
+  const [libraries, setLibraries] = useState([]);
 
   const options = {
     enableHighAccuracy: true,
@@ -13,7 +15,7 @@ export default function Page() {
   };
 
   const success = (pos) => {
-    setCoordinates(pos.coords);
+    coordinates.current = pos.coords;
   };
 
   const error = (err) => {
@@ -24,13 +26,26 @@ export default function Page() {
     const fetchCoordinates = async () => {
       await navigator.geolocation.getCurrentPosition(success, error, options);
     };
-    fetchCoordinates();
-    // console.log("Location: ", coordinates);
+    while (!coordinates.current.latitude) {
+      fetchCoordinates();
+    }
 
     const fetchParks = async () => {
-      await getParks(coordinates);
+      const parksData = await getPlaces(coordinates.current, "500", "park");
+      setParks(parksData);
     };
-    console.log(fetchParks());
-  });
+    fetchParks();
+
+    const fetchLibraries = async () => {
+      const librariesData = await getPlaces(
+        coordinates.current,
+        "500",
+        "library"
+      );
+      setLibraries(librariesData);
+    };
+    fetchLibraries();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return <p id="map">Catch Page</p>;
 }
