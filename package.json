@@ -10,9 +10,13 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "aframe": "^1.5.0",
+    "aframe-ar": "^0.2.1-a",
+    "aframe-extras": "^7.2.0",
     "next": "14.1.0",
     "react": "^18.2.0",
     "react-dom": "^18",
+    "react-helmet": "^6.1.0",
     "react-html5-camera-photo": "^1.5.11",
     "react-webcam": "^7.2.0"
   },
