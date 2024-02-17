@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { VRButton, ARButton, XR, Controllers, Hands } from "@react-three/xr";
+import { Canvas } from "@react-three/fiber";
 import getPlaces from "@/lib/location/getPlaces";
 
 export default function Page() {
   const coordinates = useRef({ lat: "43.772188", lng: "-79.506687" });
-  const [domLoaded, setDomLoaded] = useState(false);
+  // const [domLoaded, setDomLoaded] = useState(false);
   const parks = useRef([]);
   const libraries = useRef([]);
 
@@ -17,13 +19,24 @@ export default function Page() {
 
   useEffect(() => {
     fetchGamePlaces();
-    setDomLoaded(true);
+    // setDomLoaded(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
-      {domLoaded && (
+      <ARButton />
+      <Canvas>
+        <XR>
+          <Controllers />
+          <Hands />
+          <mesh>
+            <boxGeometry />
+            <meshBasicMaterial color="blue" />
+          </mesh>
+        </XR>
+      </Canvas>
+      {/* {domLoaded && (
         <div>
           <a-scene
             vr-mode-ui="enabled: false"
@@ -46,7 +59,7 @@ export default function Page() {
             ></a-entity>
           </a-scene>
 
-          {/* <a-scene
+          <a-scene
           vr-mode-ui="enabled: false"
           arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
           renderer="antialias: true; alpha: true"
@@ -69,8 +82,8 @@ export default function Page() {
             scale="5 5 5"
           ></a-text>
         </a-scene> */}
-        </div>
-      )}
+      {/* </div>
+      )} */}
       <div id="map" style={{ width: 0, height: 0 }}></div>
     </div>
   );
