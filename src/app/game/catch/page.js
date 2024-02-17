@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import getPlaces from "@/lib/location/getPlaces";
 
 export default function Page() {
-  const coordinates = useRef({});
+  const [coordinates, setCoordinates] = useState({});
   const [parks, setParks] = useState([]);
   const [libraries, setLibraries] = useState([]);
 
@@ -15,7 +15,7 @@ export default function Page() {
   };
 
   const success = (pos) => {
-    coordinates.current = pos.coords;
+    setCoordinates(pos.coords);
   };
 
   const error = (err) => {
@@ -26,23 +26,36 @@ export default function Page() {
     const fetchCoordinates = async () => {
       await navigator.geolocation.getCurrentPosition(success, error, options);
     };
-    fetchCoordinates();
+    // fetchCoordinates();
+    // console.log(coordinates);
 
     const fetchParks = async () => {
-      const parksData = await getPlaces(coordinates.current, "500", "park");
+      const parksData = await getPlaces(coordinates, "500", "park");
       setParks(parksData);
     };
-    fetchParks();
+    // fetchParks();
+    // console.log(parks);
 
     const fetchLibraries = async () => {
-      const librariesData = await getPlaces(
-        coordinates.current,
-        "500",
-        "library"
-      );
+      const librariesData = await getPlaces(coordinates, "500", "library");
       setLibraries(librariesData);
     };
-    fetchLibraries();
+    // fetchLibraries();
+
+    const fetchData = async () => {
+      while (
+        coordinates.latitude === undefined ||
+        coordinates.longitude === undefined
+      ) {
+        fetchCoordinates();
+        console.log(coordinates);
+      }
+      fetchParks();
+      fetchLibraries();
+    };
+    fetchData();
+
+    console.log(libraries);
   });
   return <p id="map">Catch Page</p>;
 }
