@@ -2,5 +2,15 @@
   "name": "ElleHacks 2024 - Team leche flan",
   "short_name": "ElleHacks 2024",
   "description": "",
-  "start_url": "/"
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ]
 }
