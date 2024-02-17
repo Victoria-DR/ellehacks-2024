@@ -20,8 +20,13 @@
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
       renderer="antialias: true; alpha: true"
     >
-      <a-camera gps-projected-camera="gpsMinDistance: 5"></a-camera>
+      <a-camera
+        gps-projected-camera="gpsMinDistance: 5"
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .tap-interaction"
+      ></a-camera>
       <a-entity
+        class="tap-interaction"
         material="color: red"
         geometry="primitive: box"
         gps-projected-entity-place="latitude: 79.50627305573806; longitude: 43.77250049156359"
@@ -36,8 +41,13 @@
       arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
       renderer="antialias: true; alpha: true"
     >
-      <a-camera gps-projected-camera="gpsMinDistance: 5"></a-camera>
+      <a-camera
+        gps-projected-camera="gpsMinDistance: 5"
+        cursor="rayOrigin: mouse"
+        raycaster="objects: .tap-interaction"
+      ></a-camera>
       <a-entity
+        class="tap-interaction"
         material="color: yellow"
         geometry="primitive: cylinder"
         gps-projected-entity-place="latitude: 79.50627305573806; longitude: 43.77250049156359"
