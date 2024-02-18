@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const router = useRouter();
+  // const router = useRouter();
 
   useEffect(() => {
-    router.push("/api/auth/login");
+    location.assign("/api/auth/login");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
