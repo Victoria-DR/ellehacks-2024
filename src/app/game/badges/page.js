@@ -8,6 +8,7 @@ import badge2 from "../../assets/images/badge2.png";
 import badge3 from "../../assets/images/badge3.png";
 import emptyBadge from "../../assets/images/emptybadge.png";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Page() {
   const badgeImages = [
@@ -26,17 +27,20 @@ export default function Page() {
   ];
 
   return (
-    <div className="page-container">
+    <div className="page-container" style={{ backgroundColor: "#fff" }}>
       <div className="title-container">
         <div className="title-container">
-          <h1> Your Badges </h1>
+          <h1 style={{ color: "#000" }}> Your Badges </h1>
         </div>
         <div className="exit-button-container"></div>
       </div>
       <div className="content-container">
-        <div>
-          <FontAwesomeIcon icon={faTimes} style={{ fontSize: "2em" }} />
-        </div>
+        <Link href="/game/catch">
+          <FontAwesomeIcon
+            icon={faTimes}
+            style={{ color: "#000", fontSize: "2em" }}
+          />
+        </Link>
         <div className="grid-container">
           {badgeImages.map((image, index) => (
             <Image
