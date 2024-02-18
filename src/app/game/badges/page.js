@@ -6,15 +6,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import badge1 from "../../assets/images/badge1.png";
 import badge2 from "../../assets/images/badge2.png";
 import badge3 from "../../assets/images/badge3.png";
-import badge4 from "../../assets/images/emptybadge.png";
-import badge5 from "../../assets/images/emptybadge.png";
-import badge6 from "../../assets/images/emptybadge.png";
-import badge7 from "../../assets/images/emptybadge.png";
-import badge8 from "../../assets/images/emptybadge.png";
-import badge9 from "../../assets/images/emptybadge.png";
-import badge10 from "../../assets/images/emptybadge.png";
-import badge11 from "../../assets/images/emptybadge.png";
-import badge12 from "../../assets/images/emptybadge.png";
+import emptyBadge from "../../assets/images/emptybadge.png";
 import Image from "next/image";
 
 export default function Page() {
@@ -22,15 +14,15 @@ export default function Page() {
     badge1,
     badge2,
     badge3,
-    badge4,
-    badge5,
-    badge6,
-    badge7,
-    badge8,
-    badge9,
-    badge10,
-    badge11,
-    badge12,
+    emptyBadge,
+    emptyBadge,
+    emptyBadge,
+    emptyBadge,
+    emptyBadge,
+    emptyBadge,
+    emptyBadge,
+    emptyBadge,
+    emptyBadge,
   ];
 
   return (
