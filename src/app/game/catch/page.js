@@ -1,32 +1,42 @@
 "use client";
 
 import "./styles.css";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BadgeButton from "@/app/components/BadgeButton";
+import EntityQuiz from "@/app/components/EntityQuiz";
 import star01 from "@/app/assets/images/star01.png";
 import star02 from "@/app/assets/images/star02.png";
 import star03 from "@/app/assets/images/star03.png";
 
 export default function Page() {
+  const entity = useRef({});
   const [domRendered, setDomRendered] = useState(false);
-  const [entityCaught, setEntityCaught] = useState(false);
+  const [entityQuiz, setEntityQuiz] = useState(false);
   const [starCount, setStarCount] = useState(0);
 
   const handleClick = () => {
     if (starCount >= 3) {
-      setEntityCaught(true);
+      setEntityQuiz(true);
       setStarCount(0);
-      console.log("quiz open");
     } else {
       setStarCount(starCount + 1);
-      console.log("test");
     }
   };
 
+  const getEntity = async () => {
+    const response = await fetch("/api/entities", {
+      method: "GET",
+    });
+    const data = await response.json();
+    entity.current = data;
+  };
+
   useEffect(() => {
+    getEntity();
     setDomRendered(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -34,16 +44,25 @@ export default function Page() {
       <Link href="/game/badges">
         <BadgeButton />
       </Link>
-      {starCount > 0 && (
+      {!entityQuiz && starCount > 0 && (
         <Image id="star-1" className="catch-star" src={star01} alt="1 star" />
       )}
-      {starCount > 1 && (
+      {!entityQuiz && starCount > 1 && (
         <Image id="star-2" className="catch-star" src={star02} alt="1 stars" />
       )}
-      {starCount > 2 && (
+      {!entityQuiz && starCount > 2 && (
         <Image id="star-3" className="catch-star" src={star03} alt="3 stars" />
       )}
-      {entityCaught && <h1>entity caught</h1>}
+      {entityQuiz && (
+        <EntityQuiz
+          title={entity.current.title}
+          question={entity.current.question}
+          option1={entity.current.option1}
+          option2={entity.current.option2}
+          option3={entity.current.option3}
+          imageUri={entity.current.imageUri}
+        />
+      )}
       {domRendered && (
         <div>
           <a-scene
@@ -52,7 +71,7 @@ export default function Page() {
             renderer="antialias: true; alpha: true"
           >
             <a-camera gps-projected-camera="gpsMinDistance: 5"></a-camera>
-            {!entityCaught && (
+            {!entityQuiz && (
               <a-entity
                 material="color: red"
                 geometry="primitive: box"
@@ -62,7 +81,7 @@ export default function Page() {
               ></a-entity>
             )}
 
-            {!entityCaught && (
+            {!entityQuiz && (
               <a-entity
                 material="color: green"
                 geometry="primitive: cylinder"

@@ -3,9 +3,9 @@ import client from "../mongodbClient";
 
 const getEntity = async (entityId) => {
   try {
-    const sprites = client.db("game").collection("entities");
+    const entities = client.db("game").collection("entities");
     const query = { _id: new ObjectId(entityId) };
-    const response = await sprites.findOne(query);
+    const response = await entities.findOne(query);
     return response;
   } catch (err) {
     console.log(err);
