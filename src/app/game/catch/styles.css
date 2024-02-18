@@ -6,6 +6,7 @@
 }
 
 .catch-star {
+  z-index: 10;
   position: absolute;
   width: 100px;
   height: 100px;
