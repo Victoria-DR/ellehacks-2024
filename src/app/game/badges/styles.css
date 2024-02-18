@@ -1,0 +1,70 @@
+/* Page.css */
+
+body {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  overflow: hidden; /* Hide scrollbars */
+}
+
+.page-container {
+  height: 100vh; /* Set height to 100% of viewport height */
+  width: 100vw; /* Set width to 100% of viewport width */
+}
+
+/* Media query for screens with a maximum width of 600px (adjust as needed) */
+@media only screen and (max-width: 600px) {
+  .page-content {
+    font-size: 14px; /* Adjust font size for smaller screens */
+    /* Add any additional styles for smaller screens here */
+  }
+}
+
+.title-container {
+  display: flex;
+  justify-content: center;
+  margin: 35px;
+}
+
+.title-container h1 {
+  font-size: 25px;
+}
+
+.exit-button-container {
+  position: fixed;
+  top: 20px; /* Adjust the top value for vertical positioning */
+  right: 20px; /* Adjust the right value for horizontal positioning */
+  cursor: pointer;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  padding: 16px; /* Optional: Add padding to the grid container */
+  border: 2px solid #333; /* Add a border around the grid container */
+  border-radius: 12px; /* Optional: Round the corners of the grid container */
+}
+
+.grid-container {
+  justify-content: center;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(
+    3,
+    1fr
+  ); /* Set the number of images per row (3 in this example) */
+  gap: 10px;
+}
+
+.image {
+  padding: 5px;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: auto;
+}
