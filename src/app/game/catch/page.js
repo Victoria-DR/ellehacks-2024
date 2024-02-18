@@ -73,7 +73,7 @@ export default function Page() {
           >
             <a-camera gps-projected-camera="gpsMinDistance: 5"></a-camera>
 
-            {/* <a-assets>
+            <a-assets>
               <a-asset-item
                 id="blazing-star"
                 src="../../assets/gltf/wildflower_bouquet/scene.gltf"
@@ -84,11 +84,11 @@ export default function Page() {
               <a-entity
                 material="color: red"
                 gltf-model="#blazing-star"
-                gps-projected-entity-place="latitude: 79.50627305573806; longitude: 43.77250049156359"
+                gps-projected-entity-place="latitude: 43.772188; longitude: -79.506687"
                 position="40 -15 0"
                 scale="10 10 10"
               ></a-entity>
-            )} */}
+            )}
           </a-scene>
         </div>
       )}
