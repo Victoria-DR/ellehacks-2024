@@ -26,7 +26,7 @@ export default function Page() {
   };
 
   const getEntity = async () => {
-    const response = await fetch("/api/entities", {
+    const response = await fetch("/api/randomEntity", {
       method: "GET",
     });
     const data = await response.json();
