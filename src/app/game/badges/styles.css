@@ -6,14 +6,9 @@ body {
   overflow: hidden; /* Hide scrollbars */
 }
 
-.page-content {
+.page-container {
   height: 100vh; /* Set height to 100% of viewport height */
   width: 100vw; /* Set width to 100% of viewport width */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-size: 16px; /* Set a base font size */
 }
 
 /* Media query for screens with a maximum width of 600px (adjust as needed) */
