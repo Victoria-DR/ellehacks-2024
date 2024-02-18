@@ -9,12 +9,23 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const placesUri = `https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&libraries=places`;
+  const placesUri = `https://maps.googleapis.com/maps/api/js?key=${process.env.NODE_ENV === "development" ? process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY : process.env.GOOGLE_MAPS_API_KEY}&libraries=places`;
 
   return (
     <html lang="en">
       <head>
         <script src={placesUri} async />
+        <script src="https://aframe.io/releases/1.3.0/aframe.min.js" async />
+        <script
+          type="text/javascript"
+          src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js"
+          async
+        />
+        <script
+          type="text/javascript"
+          src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"
+          async
+        />
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={inter.className}>{children}</body>

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Wildflower bouquet
+* source:	https://sketchfab.com/3d-models/wildflower-bouquet-6a1c3ed6920a4c1a81d1a995f62fc11b
+* author:	Irina.Tuchna (https://sketchfab.com/Irina.Tuchna)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Wildflower bouquet" (https://sketchfab.com/3d-models/wildflower-bouquet-6a1c3ed6920a4c1a81d1a995f62fc11b) by Irina.Tuchna (https://sketchfab.com/Irina.Tuchna) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

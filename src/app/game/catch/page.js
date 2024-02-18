@@ -1,22 +1,97 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import getPlaces from "@/lib/location/getPlaces";
+import "./styles.css";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import BadgeButton from "@/app/components/BadgeButton";
+import EntityQuiz from "@/app/components/EntityQuiz";
+import star01 from "@/app/assets/images/star01.png";
+import star02 from "@/app/assets/images/star02.png";
+import star03 from "@/app/assets/images/star03.png";
 
 export default function Page() {
-  const coordinates = useRef({ lat: "43.772188", lng: "-79.506687" });
-  const parks = useRef([]);
-  const libraries = useRef([]);
+  const entity = useRef({});
+  const [domRendered, setDomRendered] = useState(false);
+  const [entityQuiz, setEntityQuiz] = useState(false);
+  const [starCount, setStarCount] = useState(0);
 
-  const fetchGamePlaces = async () => {
-    const data = await getPlaces(coordinates.current);
-    parks.current = data.parks;
-    libraries.current = data.libraries;
+  const handleClick = () => {
+    if (starCount >= 3) {
+      setEntityQuiz(true);
+      setStarCount(0);
+    } else {
+      setStarCount(starCount + 1);
+    }
+  };
+
+  const getEntity = async () => {
+    const response = await fetch("/api/entities", {
+      method: "GET",
+    });
+    const data = await response.json();
+    entity.current = data;
   };
 
   useEffect(() => {
-    fetchGamePlaces();
+    getEntity();
+    setDomRendered(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  return <p id="map">Catch Page</p>;
+
+  return (
+    <div className="catch-page-wrapper" onClick={handleClick}>
+      <Link href="/game/badges">
+        <BadgeButton />
+      </Link>
+      {!entityQuiz && starCount > 0 && (
+        <Image id="star-1" className="catch-star" src={star01} alt="1 star" />
+      )}
+      {!entityQuiz && starCount > 1 && (
+        <Image id="star-2" className="catch-star" src={star02} alt="1 stars" />
+      )}
+      {!entityQuiz && starCount > 2 && (
+        <Image id="star-3" className="catch-star" src={star03} alt="3 stars" />
+      )}
+      {entityQuiz && (
+        <EntityQuiz
+          title={entity.current.title}
+          description={entity.current.description}
+          question={entity.current.question}
+          option1={entity.current.option1}
+          option2={entity.current.option2}
+          option3={entity.current.option3}
+          imageUri={entity.current.imageUri}
+        />
+      )}
+      {domRendered && (
+        <div>
+          <a-scene
+            vr-mode-ui="enabled: false"
+            arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
+            renderer="antialias: true; alpha: true"
+          >
+            <a-camera gps-projected-camera="gpsMinDistance: 5"></a-camera>
+
+            {/* <a-assets>
+              <a-asset-item
+                id="blazing-star"
+                src="../../assets/gltf/wildflower_bouquet/scene.gltf"
+              ></a-asset-item>
+            </a-assets>
+
+            {!entityQuiz && (
+              <a-entity
+                material="color: red"
+                gltf-model="#blazing-star"
+                gps-projected-entity-place="latitude: 79.50627305573806; longitude: 43.77250049156359"
+                position="40 -15 0"
+                scale="10 10 10"
+              ></a-entity>
+            )} */}
+          </a-scene>
+        </div>
+      )}
+    </div>
+  );
 }
