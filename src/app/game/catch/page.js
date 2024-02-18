@@ -4,6 +4,7 @@ import "./styles.css";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useGLTF } from "@react-three/drei";
 import BadgeButton from "@/app/components/BadgeButton";
 import EntityQuiz from "@/app/components/EntityQuiz";
 import star01 from "@/app/assets/images/star01.png";
@@ -73,18 +74,22 @@ export default function Page() {
           >
             <a-camera gps-projected-camera="gpsMinDistance: 5"></a-camera>
 
-            {/* <a-assets>
-              <a-asset-item
+            {/* <a-assets> */}
+            {/* <a-asset-item
                 id="blazing-star"
-                src="../../assets/gltf/wildflower_bouquet/scene.gltf"
-              ></a-asset-item>
-            </a-assets>
+                src="url(https://ellehacks-2024-entity-images.s3.amazonaws.com/wildflower_bouquet/scene.gltf)"
+              ></a-asset-item> */}
+            {/* <a-asset-item id="flower-obj" src="../../assets/gltf/PrimroseP_obj/PrimroseP.obj"></a-asset-item>
+              <a-asset-item id="flower-mtl" src="../../assets/gltf/PrimroseP_obj/PrimroseP.mtl"></a-asset-item> */}
+            {/* </a-assets> */}
 
-            {!entityQuiz && (
+            {/* <a-entity gltf-model-legacy="/assets/gltf/wildflower_bouquet/scene.gltf"></a-entity> */}
+            {/* <a-obj-model style={{zIndex: "5"}} obj-model="obj: url(/assets/gltf/PrimroseP_obj/PrimroseP.obj); mtl: url(/assets/gltf/PrimroseP_obj/PrimroseP.mtl)" scale="0.01 0.01 0.01"></a-obj-model> */}
+
+            {/* {!entityQuiz && (
               <a-entity
-                material="color: red"
-                gltf-model="#blazing-star"
-                gps-projected-entity-place="latitude: 79.50627305573806; longitude: 43.77250049156359"
+                obj-model="obj: #flower-obj; mtl: #flower-mtl"
+                gps-projected-entity-place="latitude: 43.772188; longitude: -79.506687"
                 position="40 -15 0"
                 scale="10 10 10"
               ></a-entity>
