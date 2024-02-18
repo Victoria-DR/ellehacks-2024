@@ -76,17 +76,16 @@ export default function Page() {
             <a-assets>
               <a-asset-item
                 id="blazing-star"
-                src="../../assets/gltf/wildflower_bouquet/scene.gltf"
+                src="/app/assets/gltf/wildflower_bouquet/scene.gltf"
               ></a-asset-item>
             </a-assets>
 
             {!entityQuiz && (
               <a-entity
-                material="color: red"
                 gltf-model="#blazing-star"
                 gps-projected-entity-place="latitude: 43.772188; longitude: -79.506687"
                 position="40 -15 0"
-                scale="10 10 10"
+                scale="40 -15 0"
               ></a-entity>
             )}
           </a-scene>
