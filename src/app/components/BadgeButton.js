@@ -1,4 +1,4 @@
-import "../assets/styles/badgeButton.css";
+import "../assets/styles/BadgeButton.css";
 import Image from "next/image";
 import badgeButtonSvg from "../assets/images/badgeButton.svg";
 
