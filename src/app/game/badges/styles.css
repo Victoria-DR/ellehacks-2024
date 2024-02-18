@@ -4,6 +4,8 @@
   height: 100vh; /* Set height to 100% of viewport height */
   width: 100vw; /* Set width to 100% of viewport width */
   /* background-color: #fff; */
+  position: absolute;
+  top: 0;
 }
 
 /* Media query for screens with a maximum width of 600px (adjust as needed) */
