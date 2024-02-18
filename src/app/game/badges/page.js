@@ -3,15 +3,35 @@ import "../badges/styles.css"; // Import your CSS file
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import badge1 from "../../assets/images/badge.png";
-import badge2 from "../../assets/images/badge.png";
-import badge3 from "../../assets/images/badge.png";
-import badge4 from "../../assets/images/badge.png";
-import badge5 from "../../assets/images/badge.png";
-import badge6 from "../../assets/images/badge.png";
+import badge1 from "../../assets/images/badge1.png";
+import badge2 from "../../assets/images/badge2.png";
+import badge3 from "../../assets/images/badge3.png";
+import badge4 from "../../assets/images/emptybadge.png";
+import badge5 from "../../assets/images/emptybadge.png";
+import badge6 from "../../assets/images/emptybadge.png";
+import badge7 from "../../assets/images/emptybadge.png";
+import badge8 from "../../assets/images/emptybadge.png";
+import badge9 from "../../assets/images/emptybadge.png";
+import badge10 from "../../assets/images/emptybadge.png";
+import badge11 from "../../assets/images/emptybadge.png";
+import badge12 from "../../assets/images/emptybadge.png";
+import Image from "next/image";
 
 export default function Page() {
-  const badgeImages = [badge1, badge2, badge3, badge4, badge5, badge6];
+  const badgeImages = [
+    badge1,
+    badge2,
+    badge3,
+    badge4,
+    badge5,
+    badge6,
+    badge7,
+    badge8,
+    badge9,
+    badge10,
+    badge11,
+    badge12,
+  ];
 
   return (
     <div className="page-container">
@@ -27,7 +47,7 @@ export default function Page() {
         </div>
         <div className="grid-container">
           {badgeImages.map((image, index) => (
-            <img
+            <Image
               className="image"
               key={index}
               src={image}
