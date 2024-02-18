@@ -1,1 +1,1 @@
-# Sun Rush
+# SunRush
