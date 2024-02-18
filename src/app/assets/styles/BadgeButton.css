@@ -1,0 +1,11 @@
+.badge-button {
+  z-index: 10;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.badge-button-image {
+  width: 79px;
+  height: 85px;
+}
