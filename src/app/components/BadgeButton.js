@@ -1,6 +1,6 @@
 import "../assets/styles/badgeButton.css";
 import Image from "next/image";
-import badgeButtonSvg from "../assets/images/badgeButton.svg";
+import badgeButtonSvg from "../assets/images/BadgeButton.svg";
 
 const BadgeButton = () => {
   return (
