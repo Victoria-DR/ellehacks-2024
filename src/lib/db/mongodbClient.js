@@ -1,9 +1,7 @@
 import { MongoClient } from "mongodb";
 
 const client = new MongoClient(
-  process.env.NODE_ENV === "development"
-    ? process.env.NEXT_PUBLIC_MONGODB_URI
-    : process.env.MONGODB_URI
+  "mongodb+srv://vercel-admin-user-65d0464c5fbc4a6154f3058b:F5qn7JfI4SCCP9Aj@ellehacks2024.admgxce.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 );
 
 export default client;
